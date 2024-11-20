@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<!--
+---
+student: Manas Bhatia
+tags: students
+image: voronoi-airports-globe.png
+---
+-->
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">  
+  <meta name="description"
+  content="Student work from Colloquium 2 of the Columbia GSAPP CDP Program in 2023." />
+  <link rel="icon" href="https://gsapp-cdp.github.io/colloquium-2-2023/favicon.ico" sizes="any">
+  <link rel="icon" href="https://gsapp-cdp.github.io/colloquium-2-2023/favicon.svg" type="image/svg+xml">
+  <link href="https://gsapp-cdp.github.io/colloquium-2-2023/base.css" rel="stylesheet" />
+  <link href="https://gsapp-cdp.github.io/colloquium-2-2023/main.css" rel="stylesheet" />
+  <link href="https://gsapp-cdp.github.io/colloquium-2-2023/colloquium1.css" rel="stylesheet" />
+
+  <title>Student Name</title>
+</head>
+
+<body>
+  <header class="container">
+    <div class="header-context">
+      <div class="h2">
+        <a class="fade" href="https://www.arch.columbia.edu/programs/15-m-s-computational-design-practices"
+          target="_blank">Columbia GSAPP</a>
+      </div>
+    </div>
+
+    <div class="header-title">
+      <div class="h1">
+        <a class="fade" href="/">Computational Design Practices</a>
+      </div>
+      <div class="h2">GSAPP CDP 2023-4 Colloquium I</div>
+    </div>
+
+    <div class="header-nav">
+      <div class="h2">
+        <a class="fade" href="/about">About</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <div class="container">
+
+      <div class="post">
+        <div class="post-header">
+          <div class="post-title">
+            <h1>STUDENT NAME</h1>
+          </div>
+        </div>
+
+        <div class="post-body project content">
+          <!-- ALL WORK SHOULD BE CONTAINED HERE. -->
+
+          <div class="toc full">
+            <h2>Table of Contents</h2>
+            <ul>
+              <li><a href="#assignment-1">1 &ndash; Systems</a></li>
+              <li><a href="#assignment-2">2 &ndash; Authorship</a></li>
+              <li><a href="#assignment-3">3 &ndash; Politics</a></li>
+              <li><a href="#assignment-4">4 &ndash; Governance</a></li>
+              <li><a href="#assignment-5">5 &ndash; Behavior</a></li>
+            </ul>
+          </div>
+
+          <!-- Assignment Sections -->
+
+          <div class="full assignment">
+            <h1 id="assignment-3">3 &ndash; Politics</h1>
+            <h2>AI Text to 3D Visualization</h2>
+            <p>Generate 3D models from text descriptions using AI.</p>
+          </div>
+          
+          <div class="full">
+            <div class="ai-model-generator">
+              <div class="input-section">
+                <textarea 
+                  id="modelPrompt" 
+                  placeholder="Describe what you want to generate (e.g., 'a modern chair', 'a cute robot')"
+                  rows="4"
+                ></textarea>
+                <div class="controls">
+                  <div class="control-group">
+                    <label for="guidanceScale">Guidance Scale:</label>
+                    <input type="range" id="guidanceScale" min="1" max="20" value="15" step="0.5">
+                    <span id="guidanceValue">15.0</span>
+                  </div>
+                  <div class="control-group">
+                    <label for="inferenceSteps">Inference Steps:</label>
+                    <input type="range" id="inferenceSteps" min="16" max="128" value="64" step="16">
+                    <span id="stepsValue">64</span>
+                  </div>
+                  <button id="generateButton" class="generate-btn">Generate 3D Model</button>
+                </div>
+              </div>
+              
+              <div class="model-viewer-container">
+                <div id="modelViewer" class="model-display">
+                  <img id="outputGif" style="display: none; max-width: 100%; height: auto;">
+                  <div class="loading-message" style="display: none;">
+                    Generating your 3D model... This may take a few moments.
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <style>
+            /* Style for AI Model Generator Section */
+            .ai-model-generator {
+              padding: 2rem;
+              background: #f5f5f5;
+              border-radius: 8px;
+            }
+          
+            .input-section {
+              margin-bottom: 2rem;
+            }
+          
+            #modelPrompt {
+              width: 100%;
+              padding: 1rem;
+              border: 1px solid #ddd;
+              border-radius: 4px;
+              font-size: 1rem;
+              margin-bottom: 1rem;
+            }
+          
+            .generate-btn {
+              background: #000;
+              color: white;
+              padding: 0.8rem 1.5rem;
+              border: none;
+              border-radius: 4px;
+              cursor: pointer;
+              font-size: 1rem;
+              transition: background 0.3s ease;
+            }
+          
+            .generate-btn:hover {
+              background: #333;
+            }
+          
+            .model-viewer-container {
+              aspect-ratio: 16/9;
+              background: #fff;
+              border: 1px solid #ddd;
+              border-radius: 4px;
+              overflow: hidden;
+            }
+          
+            .model-display {
+              width: 100%;
+              height: 100%;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+            }
+          
+            .loading-message {
+              font-size: 1.2rem;
+              color: #666;
+            }
+          
+            .controls {
+              display: flex;
+              flex-wrap: wrap;
+              gap: 1rem;
+              align-items: center;
+            }
+          
+            .control-group {
+              display: flex;
+              align-items: center;
+              gap: 0.5rem;
+            }
+          
+            .control-group label {
+              font-size: 0.9rem;
+              color: #666;
+            }
+          
+            .control-group input[type="range"] {
+              width: 150px;
+            }
+          
+            #outputGif {
+              max-width: 100%;
+              border-radius: 4px;
+              box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            }
+          </style>
+          
+          <script>
+            const API_URL = "https://api-inference.huggingface.co/models/openai/shap-e";
+            const API_KEY = "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";
+          
+            document.getElementById('guidanceScale').addEventListener('input', (e) => {
+              document.getElementById('guidanceValue').textContent = e.target.value;
+            });
+          
+            document.getElementById('inferenceSteps').addEventListener('input', (e) => {
+              document.getElementById('stepsValue').textContent = e.target.value;
+            });
+          
+            document.getElementById('generateButton').addEventListener('click', async () => {
+              const prompt = document.getElementById('modelPrompt').value;
+              const guidanceScale = parseFloat(document.getElementById('guidanceScale').value);
+              const inferenceSteps = parseInt(document.getElementById('inferenceSteps').value);
+              
+              const modelViewer = document.getElementById('modelViewer');
+              const loadingMessage = modelViewer.querySelector('.loading-message');
+              const outputGif = document.getElementById('outputGif');
+              
+              if (!prompt) {
+                alert('Please enter a description first');
+                return;
+              }
+          
+              // Show loading state
+              loadingMessage.style.display = 'flex';
+              outputGif.style.display = 'none';
+              
+              try {
+                const response = await fetch(API_URL, {
+                  method: 'POST',
+                  headers: {
+                    'Authorization': `Bearer ${API_KEY}`,
+                    'Content-Type': 'application/json',
+                  },
+                  body: JSON.stringify({
+                    inputs: prompt,
+                    parameters: {
+                      guidance_scale: guidanceScale,
+                      num_inference_steps: inferenceSteps
+                    },
+                    options: {
+                      wait_for_model: true
+                    }
+                  })
+                });
+          
+                if (!response.ok) {
+                  const error = await response.json();
+                  throw new Error(error.error || 'API request failed');
+                }
+          
+                // The API returns a binary blob (GIF)
+                const blob = await response.blob();
+                const gifUrl = URL.createObjectURL(blob);
+                
+                // Display the generated GIF
+                outputGif.src = gifUrl;
+                outputGif.style.display = 'block';
+                
+              } catch (error) {
+                console.error('Error generating model:', error);
+                alert(`Error generating the 3D model: ${error.message}`);
+              } finally {
+                loadingMessage.style.display = 'none';
+              }
+            });
+          </script>
+        </div>
+      </div>
+
+      <footer></footer>
+    </div>
+  </main>
+</body>
+
+</html>
